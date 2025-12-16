@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "id": "24e5",
+      "name": "garikipati maneesha",
+      "email": "maneeshag099@gmail.com",
+      "mobile": "+919154176899",
+      "password": "123456",
+      "pan": "",
+      "createdAt": "2025-12-16T15:41:28.856Z",
+      "riskScore": 3,
+      "learningLevel": "Beginner",
+      "riskAnswers": {
+        "q1": 1,
+        "q2": 1,
+        "q3": 1
+      }
+    },
+    {
+      "id": "d9d9",
+      "name": "GARIKIPATI SRINIVASA RAO",
+      "email": "BHANURAJESHGARIKIPATI@GMAIL.COM",
+      "mobile": "+917995104089",
+      "password": "123456",
+      "pan": "",
+      "createdAt": "2025-12-16T15:44:39.147Z",
+      "riskScore": 7,
+      "learningLevel": "Intermediate",
+      "riskAnswers": {
+        "q1": 3,
+        "q2": 2,
+        "q3": 2
+      }
+    }
+  ]
+}
