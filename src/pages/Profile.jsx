@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './Profile.css';
 
-const API_URL = 'http://localhost:5000/users';
+// API Base URL configured in main.jsx
 
 const Profile = () => {
     const [user, setUser] = useState(null);
@@ -49,7 +49,7 @@ const Profile = () => {
     const fetchUser = () => {
         const userId = localStorage.getItem('financial_user_id');
         if (userId) {
-            axios.get(`${API_URL}/${userId}`)
+            axios.get(`/users/${userId}`)
                 .then(res => {
                     setUser(res.data);
                     if (res.data.riskAnswers) {
@@ -71,7 +71,7 @@ const Profile = () => {
         if (score >= 8) level = 'Advanced';
 
         try {
-            await axios.patch(`${API_URL}/${user.id}`, {
+            await axios.patch(`/users/${user.id}`, {
                 riskScore: score,
                 learningLevel: level,
                 riskAnswers: tempAnswers

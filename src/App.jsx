@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -18,12 +19,11 @@ function App() {
       const userId = localStorage.getItem('financial_user_id');
       if (userId) {
         try {
-          const response = await fetch(`http://localhost:5000/users/${userId}`);
-          if (response.ok) {
-            const user = await response.json();
-            if (user.learningLevel) {
-              setIsOnboarded(true);
-            }
+          const response = await axios.get(`/users/${userId}`);
+          // Axios throws on 4xx/5xx so if we are here, it's success (2xx)
+          const user = response.data;
+          if (user.learningLevel) {
+            setIsOnboarded(true);
           }
         } catch (error) {
           console.error("Failed to verify user session", error);

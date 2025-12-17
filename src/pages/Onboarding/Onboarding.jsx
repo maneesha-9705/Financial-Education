@@ -3,7 +3,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './Onboarding.css';
 
-const API_URL = 'http://localhost:5000/users';
+// API Base URL configured in main.jsx
+// const API_URL = 'http://localhost:5000/users';
 
 export default function Onboarding({ onComplete }) {
     const [isLogin, setIsLogin] = useState(false); // Toggle between Login and Signup
@@ -27,9 +28,10 @@ export default function Onboarding({ onComplete }) {
     useEffect(() => {
         const checkExistingSession = async () => {
             const userId = localStorage.getItem('financial_user_id');
-            if (userId) {
+            const token = localStorage.getItem('token');
+            if (userId && token) {
                 try {
-                    const res = await axios.get(`${API_URL}/${userId}`);
+                    const res = await axios.get(`/users/${userId}`);
                     const user = res.data;
                     if (!user.learningLevel) {
                         // User exists but didn't finish onboarding
@@ -38,7 +40,11 @@ export default function Onboarding({ onComplete }) {
                     }
                 } catch (err) {
                     console.error("Session check failed", err);
-                    // If 404, maybe clear local storage? Let's leave it for now.
+                    // Invalid token or user
+                    if (err.response && (err.response.status === 401 || err.response.status === 403)) {
+                        localStorage.removeItem('token');
+                        localStorage.removeItem('financial_user_id');
+                    }
                 }
             }
         };
@@ -54,61 +60,58 @@ export default function Onboarding({ onComplete }) {
         try {
             if (isLogin) {
                 // LOGIN LOGIC
-                const res = await axios.get(`${API_URL}?email=${formData.email}`);
-                if (res.data.length === 0) {
-                    setError("User not found. Please sign up.");
-                    setLoading(false);
-                    return;
-                }
+                const res = await axios.post('/login', {
+                    email: formData.email,
+                    password: formData.password
+                });
 
-                const user = res.data[0];
-                if (user.password !== formData.password) {
-                    setError("Invalid credentials.");
-                    setLoading(false);
-                    return;
-                }
+                const { token, user } = res.data;
 
-                // Login Success
+                localStorage.setItem('token', token);
                 localStorage.setItem('financial_user_id', user.id);
 
                 // Check if risk profile is done
                 if (user.learningLevel) {
                     onComplete(); // Go to Main App
-                    navigate('/'); // Navigate to home after successful login and profile completion
+                    navigate('/');
                 } else {
                     // Restore data and go to Risk Step
-                    setFormData(user);
+                    setFormData(prev => ({ ...prev, ...user }));
                     setStep(2);
                 }
 
             } else {
                 // SIGNUP LOGIC
-                // 1. Check if email exists
-                const checkRes = await axios.get(`${API_URL}?email=${formData.email}`);
-                if (checkRes.data.length > 0) {
-                    setError("Email already registered. Please login.");
-                    setLoading(false);
-                    return;
-                }
-
-                // 2. Create User
                 const newUser = {
                     name: formData.name,
                     email: formData.email,
                     mobile: formData.mobile,
                     password: formData.password,
                     pan: formData.pan, // Optional
-                    createdAt: new Date().toISOString()
                 };
 
-                const createRes = await axios.post(API_URL, newUser);
-                localStorage.setItem('financial_user_id', createRes.data.id);
-                setFormData({ ...formData, id: createRes.data.id });
+                const res = await axios.post('/register', newUser);
+                // Auto login or just continue
+                // The register endpoint returns user data but typically we might want to auto-login.
+                // For now, let's ask them to login or if the API returns a token (my implementation didn't return token on register).
+                // Let's modify register to return token OR just login immediately.
+
+                // Assuming we need to login after register for the token:
+                const loginRes = await axios.post('/login', {
+                    email: formData.email,
+                    password: formData.password
+                });
+
+                const { token, user } = loginRes.data;
+                localStorage.setItem('token', token);
+                localStorage.setItem('financial_user_id', user.id);
+
+                setFormData(prev => ({ ...prev, ...user }));
                 setStep(2); // Go to Risk Assessment
             }
         } catch (err) {
             console.error(err);
-            setError("Something went wrong. Is the server running?");
+            setError(err.response?.data?.message || "Authentication failed.");
         } finally {
             setLoading(false);
         }
@@ -161,7 +164,7 @@ export default function Onboarding({ onComplete }) {
         setLoading(true);
         try {
             const userId = localStorage.getItem('financial_user_id');
-            await axios.patch(`${API_URL}/${userId}`, {
+            await axios.patch(`/users/${userId}`, {
                 riskScore: score,
                 learningLevel: level,
                 riskAnswers

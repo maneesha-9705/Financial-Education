@@ -9,7 +9,7 @@ const Home = () => {
     useEffect(() => {
         const userId = localStorage.getItem('financial_user_id');
         if (userId) {
-            axios.get(`http://localhost:5000/users/${userId}`)
+            axios.get(`/users/${userId}`)
                 .then(res => setUser(res.data))
                 .catch(err => console.error(err));
         }
