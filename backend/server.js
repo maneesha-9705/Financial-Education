@@ -84,6 +84,15 @@ const authenticateToken = (req, res, next) => {
 // REMOVED GLOBAL AUTH MIDDLEWARE TO PREVENT ISSUES
 // app.use('/api', authenticateToken);
 
+// Page View Logging Endpoint
+app.post('/api/log-page-view', (req, res) => {
+    const { url } = req.body;
+    console.log(`\n================================`);
+    console.log(`>>> USER VISITED PAGE: ${url}`);
+    console.log(`================================\n`);
+    res.sendStatus(200);
+});
+
 // Routes
 
 // Register (Public)

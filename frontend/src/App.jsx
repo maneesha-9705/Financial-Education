@@ -8,6 +8,7 @@ import Learn from './pages/Learn';
 import Tools from './pages/Tools';
 import Profile from './pages/Profile';
 import Onboarding from './pages/Onboarding/Onboarding';
+import PageLogger from './components/PageLogger';
 import './App.css';
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
 
   return (
     <Router>
+      <PageLogger />
       {!isOnboarded ? (
         <Onboarding onComplete={() => setIsOnboarded(true)} />
       ) : (
@@ -49,7 +51,11 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/learn" element={<Learn />} />
               <Route path="/tools" element={<Tools />} />
-              <Route path="/profile" element={<Profile />} />
+              <Route path="/profile" element={<Profile onLogout={() => {
+                localStorage.removeItem('financial_user_id');
+                localStorage.removeItem('token');
+                setIsOnboarded(false);
+              }} />} />
               <Route path="*" element={<Navigate to="/" />} />
             </Routes>
           </main>

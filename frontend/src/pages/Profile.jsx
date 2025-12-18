@@ -5,7 +5,7 @@ import './Profile.css';
 
 // API Base URL configured in main.jsx
 
-const Profile = () => {
+const Profile = ({ onLogout }) => {
     const [user, setUser] = useState(null);
     const [isEditing, setIsEditing] = useState(false);
 
@@ -86,8 +86,13 @@ const Profile = () => {
 
     const handleLogout = () => {
         if (confirm("Are you sure you want to log out? This will clear your session.")) {
-            localStorage.removeItem('financial_user_id');
-            window.location.href = '/';
+            if (onLogout) {
+                onLogout();
+            } else {
+                // Fallback if prop not provided (though it should be)
+                localStorage.removeItem('financial_user_id');
+                window.location.href = '/';
+            }
         }
     };
 
