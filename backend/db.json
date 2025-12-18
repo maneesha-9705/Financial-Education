@@ -61,6 +61,21 @@
         "q2": 2,
         "q3": 2
       }
+    },
+    {
+      "id": "1766077616435",
+      "name": "Chelluboina Navya",
+      "email": "chnavya0777@gmail.com",
+      "password": "123456",
+      "mobile": "",
+      "createdAt": "2025-12-18T17:06:56.435Z",
+      "riskScore": 3,
+      "learningLevel": "Beginner",
+      "riskAnswers": {
+        "q1": 1,
+        "q2": 1,
+        "q3": 1
+      }
     }
   ]
 }
