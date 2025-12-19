@@ -9,6 +9,7 @@ import Tools from './pages/Tools';
 import Profile from './pages/Profile';
 import Community from './pages/Community';
 import Onboarding from './pages/Onboarding/Onboarding';
+import StockPortfolio from './pages/StockPortfolio';
 import PageLogger from './components/PageLogger';
 import Chatbot from './components/Chatbot';
 import './App.css';
@@ -53,6 +54,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/learn" element={<Learn />} />
               <Route path="/tools" element={<Tools />} />
+              <Route path="/portfolio" element={<StockPortfolio />} />
               <Route path="/community" element={<Community />} />
               <Route path="/profile" element={<Profile onLogout={() => {
                 localStorage.removeItem('financial_user_id');

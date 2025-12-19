@@ -20,6 +20,8 @@ const Learn = () => {
                     console.error(err);
                     setLoading(false);
                 });
+        } else {
+            setLoading(false);
         }
     }, []);
 
@@ -99,6 +101,12 @@ const Learn = () => {
     const currentContent = userLevel ? (content[userLevel] || content['Beginner']) : [];
 
     if (loading) return <div className="loading-state">Loading your curriculum...</div>;
+
+    if (!userLevel) {
+        return <div className="container" style={{ padding: '2rem', textAlign: 'center' }}>
+            <h2>Please log in to see your learning path.</h2>
+        </div>;
+    }
 
     if (userLevel === 'Beginner' || userLevel === 'Intermediate') {
         return <BeginnerJourney userLevel={userLevel} />;

@@ -1,0 +1,224 @@
+/* Financial-Education/frontend/src/pages/StockPortfolio.css */
+
+.portfolio-container {
+  padding: var(--spacing-lg);
+  color: var(--color-text-main);
+  background-color: var(--color-background);
+  min-height: 100vh;
+}
+
+.portfolio-header {
+  margin-bottom: var(--spacing-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.portfolio-header h1 {
+  font-size: var(--font-size-xxl);
+  font-weight: 700;
+  margin-bottom: var(--spacing-xs);
+}
+
+.portfolio-header p {
+  color: var(--color-text-muted);
+}
+
+.portfolio-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+/* Summary Cards */
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.summary-card {
+  background: var(--color-surface);
+  padding: var(--spacing-md);
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s;
+}
+
+.summary-card:hover {
+  transform: translateY(-2px);
+}
+
+.summary-card .label {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacing-xs);
+}
+
+.summary-card .value {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-text-main);
+}
+
+.summary-card .sub-value {
+  font-size: var(--font-size-sm);
+  margin-left: var(--spacing-xs);
+  font-weight: 500;
+}
+
+.positive {
+  color: #10b981; /* Green */
+}
+
+.negative {
+  color: #ef4444; /* Red */
+}
+
+/* Dashboard Grid */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+@media (max-width: 900px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.chart-card {
+  background: var(--color-surface);
+  padding: var(--spacing-lg);
+  border-radius: 16px;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.chart-header h3 {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+}
+
+.time-range-selector button {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  padding: 4px 12px;
+  border-radius: 6px;
+  margin-left: 8px;
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.time-range-selector button.active,
+.time-range-selector button:hover {
+  background: var(--color-secondary);
+  color: white;
+  border-color: var(--color-secondary);
+}
+
+/* Asset Allocation - Custom Legend if needed, otherwise Recharts defaults */
+
+/* Holdings Table */
+.holdings-section {
+  background: var(--color-surface);
+  border-radius: 16px;
+  border: 1px solid var(--color-border);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.holdings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.search-bar input {
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  padding: 8px 16px;
+  border-radius: 8px;
+  color: var(--color-text-main);
+  outline: none;
+}
+
+.holdings-table-container {
+  overflow-x: auto;
+}
+
+.holdings-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.holdings-table th {
+  text-align: left;
+  padding: var(--spacing-sm);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.holdings-table td {
+  padding: var(--spacing-sm);
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-main);
+  font-size: var(--font-size-sm);
+}
+
+.holdings-table tr:last-child td {
+  border-bottom: none;
+}
+
+.stock-info {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.stock-logo {
+  width: 32px;
+  height: 32px;
+  background: #334155;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 10px;
+}
+
+.stock-ticker {
+  font-weight: 700;
+  display: block;
+}
+
+.stock-name {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.sector-tag {
+  background: rgba(56, 189, 248, 0.1); /* Sky blue tint */
+  color: #38bdf8;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+}
