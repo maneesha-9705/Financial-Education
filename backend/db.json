@@ -98,7 +98,67 @@
       "email": "test@example.com",
       "password": "password123",
       "mobile": "",
-      "createdAt": "2025-12-19T05:30:36.295Z"
+      "createdAt": "2025-12-19T05:30:36.295Z",
+      "riskScore": 4,
+      "learningLevel": "Beginner",
+      "riskAnswers": {
+        "q2": 1,
+        "q3": 2,
+        "q1": 1
+      }
+    },
+    {
+      "id": "1766125408068",
+      "name": "233",
+      "email": "ertyhjukl@gmail.com",
+      "password": "123456",
+      "mobile": "+911234567890",
+      "createdAt": "2025-12-19T06:23:28.068Z",
+      "riskScore": 3,
+      "learningLevel": "Beginner",
+      "riskAnswers": {
+        "q1": 1,
+        "q2": 1,
+        "q3": 1
+      }
+    },
+    {
+      "id": "1766127665572",
+      "name": "Test Beginner",
+      "email": "beginner@test.com",
+      "password": "password123",
+      "mobile": "",
+      "createdAt": "2025-12-19T07:01:05.573Z"
+    },
+    {
+      "id": "1766128808383",
+      "name": "ertyuiop[",
+      "email": "12degfhg@gmail.com",
+      "password": "123456",
+      "mobile": "123456788",
+      "createdAt": "2025-12-19T07:20:08.383Z",
+      "riskScore": 3,
+      "learningLevel": "Beginner",
+      "riskAnswers": {
+        "q1": 1,
+        "q2": 1,
+        "q3": 1
+      }
+    },
+    {
+      "id": "1766129191503",
+      "name": "345678",
+      "email": "tyujkl@gmail.com",
+      "password": "123456",
+      "mobile": "1234567890",
+      "createdAt": "2025-12-19T07:26:31.503Z",
+      "riskScore": 3,
+      "learningLevel": "Beginner",
+      "riskAnswers": {
+        "q1": 1,
+        "q2": 1,
+        "q3": 1
+      }
     }
   ]
 }

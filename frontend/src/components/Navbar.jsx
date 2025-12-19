@@ -46,10 +46,20 @@ const Navbar = () => {
             <Link to="/tools" className={`nav-link ${isActive('/tools')}`} onClick={() => setIsMenuOpen(false)}>Tools</Link>
           </li>
           <li>
+            <Link to="/community" className={`nav-link ${isActive('/community')}`} onClick={() => setIsMenuOpen(false)}>Community</Link>
+          </li>
+          <li>
             <Link to="/profile" className={`nav-link ${isActive('/profile')}`} onClick={() => setIsMenuOpen(false)}>Profile</Link>
           </li>
         </ul>
         <div className="navbar-actions">
+          <button
+            onClick={() => document.body.classList.toggle('dark-mode')}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '1.2rem', marginRight: '1rem' }}
+            title="Toggle Theme"
+          >
+            🌓
+          </button>
           {userName ? (
             <Link to="/profile" className="profile-icon" title={userName}>
               {userName.charAt(0).toUpperCase()}

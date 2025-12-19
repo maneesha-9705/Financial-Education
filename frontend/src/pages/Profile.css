@@ -2,9 +2,9 @@
 .profile-page {
     padding: 2rem 1rem;
     max-width: 800px;
-    /* Slight increase for better spacing */
     margin: 0 auto;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-family);
+    color: var(--color-text-main);
 }
 
 .profile-header {
@@ -29,19 +29,20 @@
 
 .profile-title {
     font-size: 2.25rem;
-    color: var(--color-primary);
+    color: var(--color-text-main);
+    /* Uses variable */
     margin: 0;
 }
 
-/* Card Styling Update */
+/* Card Styling Update - Using Variables for Dark Mode */
 .profile-card,
 .risk-section {
-    background: white;
+    background: var(--color-surface);
     padding: 2rem;
     border-radius: 16px;
-    /* consistent radius */
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-sm);
     margin-bottom: 2rem;
+    border: 1px solid var(--color-border);
 }
 
 @media (max-width: 600px) {
@@ -63,7 +64,7 @@
     gap: 1.5rem;
     align-items: center;
     padding-bottom: 1rem;
-    border-bottom: 1px solid #f1f5f9;
+    border-bottom: 1px solid var(--color-border);
 }
 
 .info-row:last-child {
@@ -81,14 +82,14 @@
 
 .info-row .label {
     font-weight: 600;
-    color: #64748b;
+    color: var(--color-text-muted);
     min-width: 80px;
     font-size: 0.95rem;
 }
 
 .info-row .value {
     font-size: 1rem;
-    color: #1e293b;
+    color: var(--color-text-main);
     font-weight: 500;
 }
 
@@ -120,13 +121,17 @@
 .level-badge.large {
     font-size: 1.5rem;
     padding: 0.75rem 2rem;
+    /* Clean padding */
     display: inline-block;
     margin-top: 0.5rem;
+    background-color: var(--color-secondary);
+    color: white;
+    border-radius: 8px;
 }
 
 .level-desc {
     margin-top: 1rem;
-    color: #475569;
+    color: var(--color-text-muted);
     font-size: 1.1rem;
     margin-bottom: 2rem;
     line-height: 1.6;
@@ -161,7 +166,7 @@
     font-size: 1.1rem;
     font-weight: 600;
     margin-bottom: 1rem;
-    color: #334155;
+    color: var(--color-text-main);
 }
 
 .options-group {
@@ -175,34 +180,27 @@
     align-items: center;
     gap: 0.75rem;
     padding: 1rem;
-    border: 1px solid #e2e8f0;
+    border: 1px solid var(--color-border);
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.2s;
+    background-color: transparent;
+    color: var(--color-text-main);
 }
 
 .option-label:hover {
-    background-color: #f8fafc;
-    border-color: #cbd5e1;
+    border-color: var(--color-secondary);
 }
 
 .option-label.selected {
-    background-color: #e0e7ff;
-    border-color: #818cf8;
+    background-color: rgba(13, 148, 136, 0.1);
+    /* Subtle teal tint */
+    border-color: var(--color-secondary);
+    font-weight: 600;
 }
 
 .option-label input[type="radio"] {
-    accent-color: var(--color-secondary, #4f46e5);
+    accent-color: var(--color-secondary);
     width: 1.2rem;
     height: 1.2rem;
-}
-
-/* Result Container - kept for reference if used elsewhere */
-.result-container {
-    text-align: center;
-    background: white;
-    padding: 3rem;
-    border-radius: 12px;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    border-top: 5px solid #4f46e5;
 }

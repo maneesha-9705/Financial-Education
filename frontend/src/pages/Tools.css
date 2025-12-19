@@ -3,7 +3,8 @@
     padding: 3rem 1rem;
     max-width: 1200px;
     margin: 0 auto;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-family);
+    color: var(--color-text-main);
 }
 
 .tools-header-main {
@@ -14,13 +15,13 @@
 
 .main-title {
     font-size: 2.5rem;
-    color: #0f172a;
+    color: var(--color-text-main);
     margin-bottom: 0.5rem;
     font-weight: 800;
 }
 
 .main-subtitle {
-    color: #64748b;
+    color: var(--color-text-muted);
     font-size: 1.1rem;
 }
 
@@ -41,13 +42,14 @@
 
 /* Sidebar Navigation */
 .tools-nav {
-    background: white;
+    background: var(--color-surface);
     padding: 1rem;
     border-radius: 16px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--shadow-sm);
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    border: 1px solid var(--color-border);
 }
 
 @media (max-width: 900px) {
@@ -78,19 +80,24 @@
 }
 
 .nav-item:hover {
-    background: #f8fafc;
+    background: var(--color-background);
 }
 
 .nav-item.active {
-    background: #eef2ff;
-    border-color: #4f46e5;
+    background: rgba(13, 148, 136, 0.1);
+    /* Teal tint */
+    border-color: var(--color-secondary);
 }
 
 .nav-item .icon {
     font-size: 1.5rem;
     min-width: 2rem;
-    /* Prevent icon collapse */
     text-align: center;
+    color: var(--color-text-main);
+}
+
+.nav-item.active .icon {
+    color: var(--color-secondary);
 }
 
 .nav-item .nav-text {
@@ -101,19 +108,19 @@
 .nav-item .title {
     display: block;
     font-weight: 700;
-    color: #334155;
+    color: var(--color-text-main);
     font-size: 1rem;
     line-height: 1.2;
 }
 
 .nav-item.active .title {
-    color: #4f46e5;
+    color: var(--color-secondary);
 }
 
 .nav-item .desc {
     display: block;
     font-size: 0.8rem;
-    color: #94a3b8;
+    color: var(--color-text-muted);
     margin-top: 2px;
 }
 
@@ -121,14 +128,14 @@
 .tool-display-area {
     animation: slideIn 0.3s ease-out;
     min-width: 0;
-    /* Prevent grid blowout */
 }
 
 .tool-content {
-    background: white;
+    background: var(--color-surface);
     border-radius: 20px;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--shadow-md);
     padding: 2.5rem;
+    border: 1px solid var(--color-border);
 }
 
 @media (max-width: 600px) {
@@ -139,22 +146,22 @@
 
 .tool-intro {
     margin-bottom: 2.5rem;
-    border-bottom: 1px solid #e2e8f0;
+    border-bottom: 1px solid var(--color-border);
     padding-bottom: 1.5rem;
 }
 
 .tool-intro h2 {
     font-size: 1.8rem;
-    color: #1e293b;
+    color: var(--color-text-main);
     margin-bottom: 0.5rem;
 }
 
 .tool-intro p {
-    color: #64748b;
+    color: var(--color-text-muted);
     line-height: 1.6;
 }
 
-/* Common Calculator Grid */
+/* Calculator Grid */
 .calculator-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -175,7 +182,7 @@
 .input-group label {
     display: block;
     font-weight: 600;
-    color: #334155;
+    color: var(--color-text-main);
     margin-bottom: 0.5rem;
 }
 
@@ -189,11 +196,12 @@
     min-width: 100px;
     text-align: right;
     font-weight: 700;
-    color: #4f46e5;
-    background: #f1f5f9;
+    color: var(--color-secondary);
+    background: var(--color-background);
     padding: 0.25rem 0.5rem;
     border-radius: 6px;
     font-size: 0.9rem;
+    border: 1px solid var(--color-border);
 }
 
 /* Ranges */
@@ -201,7 +209,7 @@
     flex: 1;
     -webkit-appearance: none;
     height: 6px;
-    background: #e2e8f0;
+    background: var(--color-border);
     border-radius: 5px;
     outline: none;
 }
@@ -211,18 +219,18 @@
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: #4f46e5;
+    background: var(--color-secondary);
     cursor: pointer;
-    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+    box-shadow: 0 0 0 4px rgba(13, 148, 136, 0.2);
     transition: all 0.2s;
 }
 
 .premium-range::-webkit-slider-thumb:hover {
     transform: scale(1.1);
-    box-shadow: 0 0 0 6px rgba(79, 70, 229, 0.2);
+    box-shadow: 0 0 0 6px rgba(13, 148, 136, 0.3);
 }
 
-/* Summary Cards (Compound Interest) */
+/* Summary Cards */
 .summary-cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -237,16 +245,17 @@
 }
 
 .card {
-    background: #f8fafc;
+    background: var(--color-background);
     padding: 1rem;
     border-radius: 12px;
     text-align: center;
+    border: 1px solid var(--color-border);
 }
 
 .card span {
     font-size: 0.75rem;
     text-transform: uppercase;
-    color: #64748b;
+    color: var(--color-text-muted);
     font-weight: 700;
     display: block;
     margin-bottom: 0.25rem;
@@ -254,17 +263,17 @@
 
 .card h3 {
     font-size: 1.1rem;
-    color: #1e293b;
+    color: var(--color-text-main);
     font-weight: 700;
 }
 
 .card.highlight {
-    background: #eef2ff;
-    border: 1px solid #c7d2fe;
+    background: rgba(13, 148, 136, 0.1);
+    border: 1px solid var(--color-secondary);
 }
 
 .card.highlight h3 {
-    color: #4f46e5;
+    color: var(--color-secondary);
 }
 
 /* Budget Planner Styles */
@@ -276,15 +285,15 @@
 }
 
 .budget-item {
-    background: #f8fafc;
+    background: var(--color-background);
     padding: 1rem;
     border-radius: 8px;
-    border-left: 4px solid #ccc;
+    border-left: 4px solid var(--color-border);
 }
 
 .budget-item h4 {
     margin: 0;
-    color: #334155;
+    color: var(--color-text-main);
     display: flex;
     justify-content: space-between;
 }
@@ -293,39 +302,50 @@
     font-size: 1.25rem;
     font-weight: 700;
     margin: 0.5rem 0;
-    color: #1e293b;
+    color: var(--color-text-main);
 }
 
 .budget-item ul {
     margin: 0;
     padding-left: 1.2rem;
     font-size: 0.85rem;
-    color: #64748b;
+    color: var(--color-text-muted);
 }
 
 .helper-text {
     font-size: 0.8rem;
-    color: #94a3b8;
+    color: var(--color-text-muted);
     font-style: italic;
     margin-top: 0.25rem;
 }
 
 .advice-card {
     margin-top: 2rem;
-    background: #fffbeb;
+    background: rgba(245, 158, 11, 0.1);
+    /* Amber Tint */
     padding: 1.5rem;
     border-radius: 12px;
-    border: 1px solid #fcd34d;
+    border: 1px solid #f59e0b;
 }
 
 .advice-card h3 {
     color: #b45309;
+    /* Deep Amber - Keep specific for warning color */
     margin-bottom: 0.5rem;
+}
+
+body.dark-mode .advice-card h3 {
+    color: #fbbf24;
+    /* Lighter Amber for dark mode */
 }
 
 .advice-card p {
     color: #92400e;
     font-size: 0.95rem;
+}
+
+body.dark-mode .advice-card p {
+    color: #fde68a;
 }
 
 /* Loan Payoff Styles */
@@ -339,35 +359,41 @@
 .payoff-stat {
     padding: 1.5rem;
     border-radius: 12px;
-    background: #f8fafc;
+    background: var(--color-background);
     text-align: center;
+    border: 1px solid var(--color-border);
 }
 
 .payoff-stat.success-box {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
+    background: rgba(16, 185, 129, 0.1);
+    /* Emerald Tint */
+    border: 1px solid #10b981;
 }
 
 .payoff-stat.success-box h3 {
     color: #059669;
 }
 
+body.dark-mode .payoff-stat.success-box h3 {
+    color: #34d399;
+}
+
 .payoff-stat h3 {
     font-size: 1.5rem;
-    color: #1e293b;
+    color: var(--color-text-main);
     font-weight: 800;
 }
 
 .payoff-stat span {
     font-size: 0.8rem;
-    color: #64748b;
+    color: var(--color-text-muted);
     text-transform: uppercase;
     letter-spacing: 0.05em;
     display: block;
     margin-bottom: 0.5rem;
 }
 
-/* Risk Assessment Styles */
+/* Risk Assessment */
 .assessment-container {
     max-width: 600px;
     margin: 0 auto;
@@ -381,7 +407,7 @@
 .progress-bar {
     width: 100%;
     height: 8px;
-    background: #e2e8f0;
+    background: var(--color-border);
     border-radius: 4px;
     margin-bottom: 2rem;
     overflow: hidden;
@@ -389,12 +415,12 @@
 
 .progress-fill {
     height: 100%;
-    background: #4f46e5;
+    background: var(--color-secondary);
     transition: width 0.3s ease;
 }
 
 .question-number {
-    color: #64748b;
+    color: var(--color-text-muted);
     font-size: 0.9rem;
     text-transform: uppercase;
     margin-bottom: 0.5rem;
@@ -402,7 +428,7 @@
 
 .quiz-question {
     font-size: 1.4rem;
-    color: #1e293b;
+    color: var(--color-text-main);
     margin-bottom: 2rem;
 }
 
@@ -414,20 +440,20 @@
 
 .quiz-option {
     padding: 1.25rem;
-    border: 2px solid #e2e8f0;
+    border: 2px solid var(--color-border);
     border-radius: 12px;
-    background: white;
+    background: var(--color-surface);
     text-align: left;
     font-size: 1.05rem;
-    color: #475569;
+    color: var(--color-text-muted);
     cursor: pointer;
     transition: all 0.2s;
 }
 
 .quiz-option:hover {
-    border-color: #4f46e5;
-    background: #fafafa;
-    color: #1e293b;
+    border-color: var(--color-secondary);
+    background: var(--color-background);
+    color: var(--color-text-main);
 }
 
 .result-box {
@@ -437,7 +463,7 @@
 .result-label {
     display: block;
     font-size: 1rem;
-    color: #64748b;
+    color: var(--color-text-muted);
     margin-bottom: 0.5rem;
 }
 
@@ -445,43 +471,32 @@
     font-size: 3rem;
     font-weight: 900;
     margin-bottom: 1.5rem;
-}
-
-.profile-name.conservative {
-    color: #3b82f6;
-}
-
-.profile-name.moderate {
-    color: #f59e0b;
-}
-
-.profile-name.aggressive {
-    color: #ef4444;
+    color: var(--color-text-main);
 }
 
 .result-desc {
     font-size: 1.15rem;
-    color: #334155;
+    color: var(--color-text-main);
     line-height: 1.6;
     margin-bottom: 2.5rem;
 }
 
 .recommendation-box {
-    background: #f1f5f9;
+    background: var(--color-background);
     padding: 1.5rem;
     border-radius: 12px;
     margin-bottom: 2rem;
 }
 
 .recommendation-box h4 {
-    color: #1e293b;
+    color: var(--color-text-main);
     margin-bottom: 0.5rem;
 }
 
 .btn-reset {
     background: transparent;
-    border: 2px solid #cbd5e1;
-    color: #64748b;
+    border: 2px solid var(--color-border);
+    color: var(--color-text-muted);
     padding: 0.75rem 2rem;
     border-radius: 8px;
     font-weight: 600;
@@ -490,8 +505,8 @@
 }
 
 .btn-reset:hover {
-    border-color: #94a3b8;
-    color: #334155;
+    border-color: var(--color-text-muted);
+    color: var(--color-text-main);
 }
 
 @keyframes slideIn {
