@@ -10,6 +10,7 @@ import Profile from './pages/Profile';
 import Community from './pages/Community';
 import Onboarding from './pages/Onboarding/Onboarding';
 import StockPortfolio from './pages/StockPortfolio';
+import StockSimulator from './pages/StockSimulator';
 import PageLogger from './components/PageLogger';
 import Chatbot from './components/Chatbot';
 import './App.css';
@@ -55,6 +56,7 @@ function App() {
               <Route path="/learn" element={<Learn />} />
               <Route path="/tools" element={<Tools />} />
               <Route path="/portfolio" element={<StockPortfolio />} />
+              <Route path="/simulator" element={<StockSimulator />} />
               <Route path="/community" element={<Community />} />
               <Route path="/profile" element={<Profile onLogout={() => {
                 sessionStorage.removeItem('financial_user_id');
