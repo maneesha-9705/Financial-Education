@@ -46,6 +46,9 @@ const Navbar = () => {
             <Link to="/tools" className={`nav-link ${isActive('/tools')}`} onClick={() => setIsMenuOpen(false)}>Tools</Link>
           </li>
           <li>
+            <Link to="/portfolio" className={`nav-link ${isActive('/portfolio')}`} onClick={() => setIsMenuOpen(false)}>Portfolio</Link>
+          </li>
+          <li>
             <Link to="/community" className={`nav-link ${isActive('/community')}`} onClick={() => setIsMenuOpen(false)}>Community</Link>
           </li>
           <li>
