@@ -9,6 +9,7 @@ import Tools from './pages/Tools';
 import Profile from './pages/Profile';
 import Onboarding from './pages/Onboarding/Onboarding';
 import PageLogger from './components/PageLogger';
+import Chatbot from './components/Chatbot';
 import './App.css';
 
 function App() {
@@ -60,6 +61,7 @@ function App() {
             </Routes>
           </main>
           <Footer />
+          <Chatbot />
         </div>
       )}
     </Router>
