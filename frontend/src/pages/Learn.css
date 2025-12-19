@@ -20,6 +20,19 @@
     font-size: 1.1rem;
 }
 
+.daily-quote {
+    margin-top: 1.5rem;
+    font-style: italic;
+    color: var(--color-text-main);
+    background: var(--color-surface);
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--color-secondary);
+    display: inline-block;
+    max-width: 80%;
+    box-shadow: var(--shadow-sm);
+}
+
 .learn-tabs {
     display: flex;
     justify-content: center;

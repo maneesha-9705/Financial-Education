@@ -167,7 +167,7 @@ export default function Onboarding({ onComplete }) {
         setError(''); // Clear previous errors
 
         try {
-            const userId = localStorage.getItem('financial_user_id');
+            const userId = sessionStorage.getItem('financial_user_id');
             if (!userId) {
                 throw new Error("User ID not found. Please log in again.");
             }

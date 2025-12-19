@@ -8,7 +8,7 @@ const taglines = [
     "Investing made simple, safe, and smart."
 ];
 
-export default function BeginnerJourney({ userLevel }) {
+export default function BeginnerJourney({ userLevel, dailyQuote }) {
     const [started, setStarted] = useState(true);
     const [tagline, setTagline] = useState("");
     const [isDarkMode, setIsDarkMode] = useState(false);
@@ -36,7 +36,7 @@ export default function BeginnerJourney({ userLevel }) {
             {!started ? (
                 <WelcomeScreen tagline={tagline} onStart={() => setStarted(true)} themeStyles={themeStyles} />
             ) : (
-                <LearningDashboard userLevel={userLevel} themeStyles={themeStyles} isDarkMode={isDarkMode} />
+                <LearningDashboard userLevel={userLevel} themeStyles={themeStyles} isDarkMode={isDarkMode} dailyQuote={dailyQuote} />
             )}
         </div>
     );
@@ -59,7 +59,7 @@ function WelcomeScreen({ tagline, onStart, themeStyles }) {
 
 /* ------------------ DASHBOARD ------------------ */
 
-function LearningDashboard({ userLevel, themeStyles, isDarkMode }) {
+function LearningDashboard({ userLevel, themeStyles, isDarkMode, dailyQuote }) {
     // Determine initial state
     const isIntermediateUser = userLevel === 'Intermediate' || userLevel === 'Advanced';
     const [currentTab, setCurrentTab] = useState(isIntermediateUser ? 'Intermediate' : 'Beginner');
@@ -85,6 +85,23 @@ function LearningDashboard({ userLevel, themeStyles, isDarkMode }) {
     return (
         <div style={themeStyles.dashboardContainer}>
             <h2 style={themeStyles.heading}>Your Learning Dashboard</h2>
+            {dailyQuote && (
+                <div style={{
+                    textAlign: 'center',
+                    marginBottom: '2rem',
+                    fontStyle: 'italic',
+                    color: isDarkMode ? '#cbd5e1' : '#475569',
+                    maxWidth: '80%',
+                    margin: '0 auto 2rem',
+                    padding: '1rem',
+                    borderLeft: '4px solid #0d9488',
+                    backgroundColor: isDarkMode ? '#1e293b' : '#ffffff',
+                    borderRadius: '8px',
+                    boxShadow: isDarkMode ? 'none' : '0 2px 4px rgba(0,0,0,0.05)'
+                }}>
+                    "{dailyQuote.text}" — <span style={{ fontWeight: '600', color: '#0d9488' }}>{dailyQuote.author}</span>
+                </div>
+            )}
 
             <div style={themeStyles.tabContainer}>
                 {!isIntermediateUser && (

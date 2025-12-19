@@ -8,7 +8,20 @@ const Learn = () => {
     const [userLevel, setUserLevel] = useState(null);
     const [loading, setLoading] = useState(true);
 
+    const [quote, setQuote] = useState(null);
+
+    const quotes = [
+        { text: "An investment in knowledge pays the best interest.", author: "Benjamin Franklin" },
+        { text: "The stock market is designed to transfer money from the Active to the Patient.", author: "Warren Buffett" },
+        { text: "Do not save what is left after spending, but spend what is left after saving.", author: "Warren Buffett" },
+        { text: "Compound interest is the eighth wonder of the world.", author: "Albert Einstein" },
+        { text: "Financial freedom is available to those who learn about it and work for it.", author: "Robert Kiyosaki" }
+    ];
+
     useEffect(() => {
+        const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+        setQuote(randomQuote);
+
         const userId = sessionStorage.getItem('financial_user_id');
         if (userId) {
             axios.get(`/users/${userId}`)
@@ -101,7 +114,7 @@ const Learn = () => {
     if (loading) return <div className="loading-state">Loading your curriculum...</div>;
 
     if (userLevel === 'Beginner' || userLevel === 'Intermediate') {
-        return <BeginnerJourney userLevel={userLevel} />;
+        return <BeginnerJourney userLevel={userLevel} dailyQuote={quote} />;
     }
 
     return (
@@ -114,6 +127,11 @@ const Learn = () => {
                     {userLevel === 'Intermediate' && "Expand your horizons with smarter investment strategies."}
                     {userLevel === 'Advanced' && "Advanced strategies for the experienced investor."}
                 </p>
+                {quote && (
+                    <div className="daily-quote">
+                        <p>"{quote.text}" — <span style={{ color: 'var(--color-secondary)' }}>{quote.author}</span></p>
+                    </div>
+                )}
             </div>
 
             <div className="learn-tabs">
