@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './Onboarding.css';
+import './ResultStyles.css';
 
 // API Base URL configured in main.jsx
 // const API_URL = 'http://localhost:5000/users';
@@ -27,8 +28,8 @@ export default function Onboarding({ onComplete }) {
 
     useEffect(() => {
         const checkExistingSession = async () => {
-            const userId = localStorage.getItem('financial_user_id');
-            const token = localStorage.getItem('token');
+            const userId = sessionStorage.getItem('financial_user_id');
+            const token = sessionStorage.getItem('token');
             if (userId && token) {
                 try {
                     const res = await axios.get(`/users/${userId}`);
@@ -42,8 +43,8 @@ export default function Onboarding({ onComplete }) {
                     console.error("Session check failed", err);
                     // Invalid token or user
                     if (err.response && (err.response.status === 401 || err.response.status === 403)) {
-                        localStorage.removeItem('token');
-                        localStorage.removeItem('financial_user_id');
+                        sessionStorage.removeItem('token');
+                        sessionStorage.removeItem('financial_user_id');
                     }
                 }
             }
@@ -69,13 +70,12 @@ export default function Onboarding({ onComplete }) {
                 const token = data.token;
                 const userId = data._id; // Backend uses _id
 
-                localStorage.setItem('token', token);
-                localStorage.setItem('financial_user_id', userId);
+                sessionStorage.setItem('token', token);
+                sessionStorage.setItem('financial_user_id', userId);
 
                 // Check if risk profile is done
                 if (data.learningLevel) {
-                    onComplete(); // Go to Main App
-                    navigate('/');
+                    window.location.href = '/';
                 } else {
                     // Restore data and go to Risk Step
                     setFormData(prev => ({ ...prev, ...data }));
@@ -106,8 +106,8 @@ export default function Onboarding({ onComplete }) {
                 const token = data.token;
                 const userId = data._id;
 
-                localStorage.setItem('token', token);
-                localStorage.setItem('financial_user_id', userId);
+                sessionStorage.setItem('token', token);
+                sessionStorage.setItem('financial_user_id', userId);
 
                 setFormData(prev => ({ ...prev, ...data }));
                 setStep(2); // Go to Risk Assessment
@@ -163,18 +163,28 @@ export default function Onboarding({ onComplete }) {
 
         setFinalLevel(level);
 
-        // Update User in DB
         setLoading(true);
+        setError(''); // Clear previous errors
+
         try {
             const userId = localStorage.getItem('financial_user_id');
+            if (!userId) {
+                throw new Error("User ID not found. Please log in again.");
+            }
+
+            console.log("Submitting risk profile for user:", userId, { score, level });
+
             await axios.patch(`/users/${userId}`, {
                 riskScore: score,
                 learningLevel: level,
                 riskAnswers
             });
+
+            console.log("Risk profile updated successfully");
             setStep(3);
         } catch (error) {
             console.error("Error saving risk profile", error);
+            setError(error.response?.data?.message || "Failed to save results. Please try again.");
         } finally {
             setLoading(false);
         }
@@ -182,8 +192,8 @@ export default function Onboarding({ onComplete }) {
 
     // === Step 3: Completion ===
     const finishOnboarding = () => {
-        onComplete();
-        navigate('/');
+        // Hard redirect to ensure fresh state from DB
+        window.location.href = '/';
     };
 
     return (
@@ -291,6 +301,8 @@ export default function Onboarding({ onComplete }) {
                         <h1 className="onboarding-title">Risk Profile</h1>
                         <p className="onboarding-subtitle">Help us tailor your learning path</p>
 
+                        {error && <div style={{ color: '#ef4444', textAlign: 'center', marginBottom: '1rem', fontSize: '0.9rem' }}>{error}</div>}
+
                         <div style={{ marginBottom: '2rem' }}>
                             {riskQuestions.map((q, idx) => (
                                 <div key={q.id} style={{ marginBottom: '1.5rem' }}>
@@ -324,23 +336,32 @@ export default function Onboarding({ onComplete }) {
                     </div>
                 )}
 
-                {step === 3 && (
-                    <div style={{ textAlign: 'center' }}>
-                        <h1 className="onboarding-title">All Set!</h1>
-                        <p className="onboarding-subtitle">Based on your profile, we've assigned you to:</p>
-
-                        <div className="level-badge">
-                            {finalLevel} Level
+                {step === 3 && finalLevel && (
+                    <div className="result-container">
+                        <div className="result-icon-wrapper">
+                            {finalLevel === 'Beginner' && <span className="result-icon">🌱</span>}
+                            {finalLevel === 'Intermediate' && <span className="result-icon">⚖️</span>}
+                            {finalLevel === 'Advanced' && <span className="result-icon">🚀</span>}
                         </div>
 
-                        <p className="level-description">
-                            {finalLevel === 'Beginner' && "Your journey starts with the fundamentals. We'll build a strong foundation first."}
-                            {finalLevel === 'Intermediate' && "You're ready to refine your strategy and explore diverse assets."}
-                            {finalLevel === 'Advanced' && "Advanced market analysis and complex instruments await you."}
-                        </p>
+                        <h1 className="onboarding-title">Analysis Complete</h1>
+                        <p className="onboarding-subtitle">Based on your answers, you are consistent with a:</p>
+
+                        <div className={`level-badge ${finalLevel.toLowerCase()}`}>
+                            {finalLevel} Investor
+                        </div>
+
+                        <div className="result-description-card">
+                            <h3 style={{ color: 'var(--text-primary)', marginBottom: '0.5rem' }}>What this means for you:</h3>
+                            <p className="level-description">
+                                {finalLevel === 'Beginner' && "You prefer safety and steady growth. We'll focus on low-risk assets like Blue-chip stocks and Index Funds while you build your foundation."}
+                                {finalLevel === 'Intermediate' && "You understand the basics and are ready to diversify. We'll introduce a mix of Growth stocks and balanced Mutual Funds."}
+                                {finalLevel === 'Advanced' && "You have a high risk tolerance. You'll get access to advanced tools for analyzing Small-cap stocks and aggressive market strategies."}
+                            </p>
+                        </div>
 
                         <button className="primary-button" onClick={finishOnboarding}>
-                            Access Dashboard
+                            Go to My Dashboard
                         </button>
                     </div>
                 )}

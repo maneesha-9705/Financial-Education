@@ -19,7 +19,7 @@ function App() {
 
   useEffect(() => {
     const checkUserStatus = async () => {
-      const userId = localStorage.getItem('financial_user_id');
+      const userId = sessionStorage.getItem('financial_user_id');
       if (userId) {
         try {
           const response = await axios.get(`/users/${userId}`);
@@ -55,8 +55,8 @@ function App() {
               <Route path="/tools" element={<Tools />} />
               <Route path="/community" element={<Community />} />
               <Route path="/profile" element={<Profile onLogout={() => {
-                localStorage.removeItem('financial_user_id');
-                localStorage.removeItem('token');
+                sessionStorage.removeItem('financial_user_id');
+                sessionStorage.removeItem('token');
                 setIsOnboarded(false);
               }} />} />
               <Route path="*" element={<Navigate to="/" />} />

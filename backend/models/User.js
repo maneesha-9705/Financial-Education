@@ -28,6 +28,16 @@ const userSchema = mongoose.Schema({
         type: Boolean,
         required: true,
         default: false
+    },
+    riskScore: {
+        type: Number,
+        required: false,
+        default: 0
+    },
+    riskAnswers: {
+        type: Object,
+        required: false,
+        default: {}
     }
 }, {
     timestamps: true
@@ -39,9 +49,9 @@ userSchema.methods.matchPassword = async function (enteredPassword) {
 };
 
 // Middleware to hash password before saving
-userSchema.pre('save', async function (next) {
+userSchema.pre('save', async function () {
     if (!this.isModified('password')) {
-        next();
+        return;
     }
 
     const salt = await bcrypt.genSalt(10);

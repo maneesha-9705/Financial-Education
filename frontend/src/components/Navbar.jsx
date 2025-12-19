@@ -9,7 +9,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-    const userId = localStorage.getItem('financial_user_id');
+    const userId = sessionStorage.getItem('financial_user_id');
     if (userId) {
       axios.get(`/users/${userId}`)
         .then(res => setUserName(res.data.name))

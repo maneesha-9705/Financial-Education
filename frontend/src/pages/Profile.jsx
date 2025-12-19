@@ -47,7 +47,7 @@ const Profile = ({ onLogout }) => {
     }, []);
 
     const fetchUser = () => {
-        const userId = localStorage.getItem('financial_user_id');
+        const userId = sessionStorage.getItem('financial_user_id');
         if (userId) {
             axios.get(`/users/${userId}`)
                 .then(res => {
@@ -90,7 +90,7 @@ const Profile = ({ onLogout }) => {
                 onLogout();
             } else {
                 // Fallback if prop not provided (though it should be)
-                localStorage.removeItem('financial_user_id');
+                sessionStorage.removeItem('financial_user_id');
                 window.location.href = '/';
             }
         }

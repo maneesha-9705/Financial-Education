@@ -19,9 +19,17 @@ const Chatbot = () => {
             // Cleanup script on unmount
             try {
                 document.body.removeChild(script);
-                // Also try to remove the widget container if known (often they append to body)
-                // Chatling usually doesn't provide a clean destroy method in the public docs,
-                // but removing the script prevents double-loading logic issues on re-mount often.
+
+                // Attempt to remove the Chatling widget element
+                // Common selectors for chatling (may vary, but we can try generic ones or check the window object)
+                const widget = document.getElementById('chatling-embed') || document.querySelector('.chtl-widget') || document.querySelector('[id^="chtl"]');
+                if (widget) {
+                    widget.remove();
+                }
+
+                // Also clean up any global styles injected if possible, though harder to track
+                // Remove global variable to force re-init if needed
+                delete window.chtlConfig;
             } catch (e) {
                 console.error("Error cleaning up chatbot script", e);
             }
