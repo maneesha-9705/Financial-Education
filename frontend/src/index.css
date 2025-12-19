@@ -1,14 +1,18 @@
 :root {
   /* Premium Color Palette */
-  --color-primary: #0f172a; /* Deep Navy */
-  --color-secondary: #0d9488; /* Teal/Green for finance */
-  --color-accent: #f59e0b; /* Gold/Amber */
-  --color-background: #f8fafc; /* Very light slate */
+  --color-primary: #0f172a;
+  /* Deep Navy */
+  --color-secondary: #0d9488;
+  /* Teal/Green for finance */
+  --color-accent: #f59e0b;
+  /* Gold/Amber */
+  --color-background: #f8fafc;
+  /* Very light slate */
   --color-surface: #ffffff;
   --color-text-main: #1e293b;
   --color-text-muted: #64748b;
   --color-border: #e2e8f0;
-  
+
   /* Gradients */
   --gradient-main: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
   --gradient-card: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
@@ -29,9 +33,30 @@
   --font-size-xxl: 3rem;
 
   /* Shadows */
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
-  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
-  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Dark Mode Overrides */
+body.dark-mode {
+  --color-primary: #60a5fa;
+  /* Blue-400 */
+  --color-secondary: #2dd4bf;
+  /* Teal-400 */
+  --color-background: #0f172a;
+  /* Slate-900 */
+  --color-surface: #1e293b;
+  /* Slate-800 */
+  --color-text-main: #f8fafc;
+  /* Slate-50 */
+  --color-text-muted: #94a3b8;
+  /* Slate-400 */
+  --color-border: #334155;
+  /* Slate-700 */
+  --gradient-card: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
 }
 
 * {
@@ -46,6 +71,7 @@ body {
   color: var(--color-text-main);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 a {
@@ -110,7 +136,7 @@ button {
   padding: var(--spacing-lg);
   box-shadow: var(--shadow-md);
   border: 1px solid var(--color-border);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .card:hover {

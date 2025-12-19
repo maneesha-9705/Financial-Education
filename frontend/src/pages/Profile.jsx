@@ -71,7 +71,7 @@ const Profile = ({ onLogout }) => {
         if (score >= 8) level = 'Advanced';
 
         try {
-            await axios.patch(`/users/${user.id}`, {
+            await axios.patch(`/users/${user._id}`, {
                 riskScore: score,
                 learningLevel: level,
                 riskAnswers: tempAnswers
