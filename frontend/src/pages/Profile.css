@@ -1,58 +1,99 @@
+/* Profile Page - Premium Design */
 .profile-page {
-    padding: 4rem 1rem;
-    max-width: 700px;
+    padding: 2rem 1rem;
+    max-width: 800px;
     margin: 0 auto;
+    font-family: var(--font-family);
+    color: var(--color-text-main);
 }
 
 .profile-header {
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 2rem;
+}
+
+@media (max-width: 600px) {
+    .profile-header {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .profile-header button {
+        width: 100%;
+        max-width: 200px;
+    }
 }
 
 .profile-title {
     font-size: 2.25rem;
-    color: var(--color-primary);
+    color: var(--color-text-main);
+    /* Uses variable */
+    margin: 0;
 }
 
-.assessment-form {
+/* Card Styling Update - Using Variables for Dark Mode */
+.profile-card,
+.risk-section {
     background: var(--color-surface);
     padding: 2rem;
-    border-radius: 12px;
-    box-shadow: var(--shadow-md);
-}
-
-.profile-card {
-    background: white;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    box-shadow: var(--shadow-sm);
     margin-bottom: 2rem;
+    border: 1px solid var(--color-border);
 }
 
+@media (max-width: 600px) {
+
+    .profile-card,
+    .risk-section {
+        padding: 1.5rem;
+    }
+}
+
+/* User Info Layout */
 .user-info {
     display: grid;
-    gap: 1rem;
+    gap: 1.25rem;
 }
 
 .info-row {
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem;
     align-items: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.info-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+@media (max-width: 500px) {
+    .info-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
 }
 
 .info-row .label {
     font-weight: 600;
-    color: #64748b;
+    color: var(--color-text-muted);
     min-width: 80px;
+    font-size: 0.95rem;
 }
 
-.risk-section {
-    background: white;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+.info-row .value {
+    font-size: 1rem;
+    color: var(--color-text-main);
+    font-weight: 500;
 }
 
+/* Section Header */
 .section-header {
     display: flex;
     justify-content: space-between;
@@ -60,18 +101,43 @@
     margin-bottom: 1.5rem;
 }
 
+@media (max-width: 600px) {
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .section-header h2 {
+        font-size: 1.25rem;
+    }
+
+    .section-header button {
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+}
+
 .level-badge.large {
     font-size: 1.5rem;
     padding: 0.75rem 2rem;
+    /* Clean padding */
+    display: inline-block;
+    margin-top: 0.5rem;
+    background-color: var(--color-secondary);
+    color: white;
+    border-radius: 8px;
 }
 
 .level-desc {
     margin-top: 1rem;
-    color: #475569;
+    color: var(--color-text-muted);
     font-size: 1.1rem;
     margin-bottom: 2rem;
+    line-height: 1.6;
 }
 
+/* Form Styles */
 .edit-risk-form {
     padding-top: 1rem;
 }
@@ -80,6 +146,16 @@
     display: flex;
     gap: 1rem;
     margin-top: 2rem;
+}
+
+@media (max-width: 500px) {
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .form-actions button {
+        width: 100%;
+    }
 }
 
 .question-block {
@@ -103,51 +179,28 @@
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    padding: 0.75rem;
+    padding: 1rem;
     border: 1px solid var(--color-border);
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.2s;
+    background-color: transparent;
+    color: var(--color-text-main);
 }
 
 .option-label:hover {
-    background-color: #f1f5f9;
+    border-color: var(--color-secondary);
+}
+
+.option-label.selected {
+    background-color: rgba(13, 148, 136, 0.1);
+    /* Subtle teal tint */
+    border-color: var(--color-secondary);
+    font-weight: 600;
 }
 
 .option-label input[type="radio"] {
     accent-color: var(--color-secondary);
     width: 1.2rem;
     height: 1.2rem;
-}
-
-.submit-btn {
-    width: 100%;
-    padding: 1rem;
-    font-size: 1.1rem;
-    margin-top: 1rem;
-}
-
-.result-container {
-    text-align: center;
-    background: var(--color-surface);
-    padding: 3rem;
-    border-radius: 12px;
-    box-shadow: var(--shadow-lg);
-    border-top: 5px solid var(--color-secondary);
-}
-
-.risk-badge {
-    display: inline-block;
-    padding: 0.5rem 1.5rem;
-    background: var(--color-secondary);
-    color: white;
-    border-radius: 50px;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    text-transform: uppercase;
-}
-
-.result-description {
-    color: var(--color-text-main);
-    margin-bottom: 2rem;
 }

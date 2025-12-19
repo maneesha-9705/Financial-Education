@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Learn.css';
+import BeginnerJourney from '../components/BeginnerJourney';
 
 const Learn = () => {
     const [activeTab, setActiveTab] = useState('modules');
@@ -98,6 +99,10 @@ const Learn = () => {
     const currentContent = userLevel ? (content[userLevel] || content['Beginner']) : [];
 
     if (loading) return <div className="loading-state">Loading your curriculum...</div>;
+
+    if (userLevel === 'Beginner' || userLevel === 'Intermediate') {
+        return <BeginnerJourney userLevel={userLevel} />;
+    }
 
     return (
         <div className="learn-page">

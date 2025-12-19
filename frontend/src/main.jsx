@@ -5,7 +5,7 @@ import './index.css'
 import App from './App.jsx'
 
 // Configure Axios
-axios.defaults.baseURL = 'http://localhost:5001/api';
+axios.defaults.baseURL = 'http://127.0.0.1:5001/api';
 axios.interceptors.request.use(config => {
   const token = localStorage.getItem('token');
   if (token) {

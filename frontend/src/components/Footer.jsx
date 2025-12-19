@@ -6,7 +6,7 @@ const Footer = () => {
         <footer className="footer">
             <div className="container footer-container">
                 <div className="footer-section">
-                    <h3>FinEdu</h3>
+                    <h3>Clari-Fi</h3>
                     <p>
                         Empowering everyone to make informed financial decisions through education and simplified tools.
                     </p>

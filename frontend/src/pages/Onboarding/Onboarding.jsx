@@ -65,18 +65,20 @@ export default function Onboarding({ onComplete }) {
                     password: formData.password
                 });
 
-                const { token, user } = res.data;
+                const data = res.data;
+                const token = data.token;
+                const userId = data._id; // Backend uses _id
 
                 localStorage.setItem('token', token);
-                localStorage.setItem('financial_user_id', user.id);
+                localStorage.setItem('financial_user_id', userId);
 
                 // Check if risk profile is done
-                if (user.learningLevel) {
+                if (data.learningLevel) {
                     onComplete(); // Go to Main App
                     navigate('/');
                 } else {
                     // Restore data and go to Risk Step
-                    setFormData(prev => ({ ...prev, ...user }));
+                    setFormData(prev => ({ ...prev, ...data }));
                     setStep(2);
                 }
 
@@ -90,28 +92,29 @@ export default function Onboarding({ onComplete }) {
                     pan: formData.pan, // Optional
                 };
 
-                const res = await axios.post('/register', newUser);
-                // Auto login or just continue
-                // The register endpoint returns user data but typically we might want to auto-login.
-                // For now, let's ask them to login or if the API returns a token (my implementation didn't return token on register).
-                // Let's modify register to return token OR just login immediately.
+                // Remove the initial register call if we are just going to login anyway? 
+                // No, we must register first.
+                await axios.post('/register', newUser);
 
-                // Assuming we need to login after register for the token:
+                // Login immediately to get the token
                 const loginRes = await axios.post('/login', {
                     email: formData.email,
                     password: formData.password
                 });
 
-                const { token, user } = loginRes.data;
-                localStorage.setItem('token', token);
-                localStorage.setItem('financial_user_id', user.id);
+                const data = loginRes.data;
+                const token = data.token;
+                const userId = data._id;
 
-                setFormData(prev => ({ ...prev, ...user }));
+                localStorage.setItem('token', token);
+                localStorage.setItem('financial_user_id', userId);
+
+                setFormData(prev => ({ ...prev, ...data }));
                 setStep(2); // Go to Risk Assessment
             }
         } catch (err) {
             console.error(err);
-            setError(err.response?.data?.message || "Authentication failed.");
+            setError(err.response?.data?.message || err.message || "Authentication failed. Check your connection.");
         } finally {
             setLoading(false);
         }
