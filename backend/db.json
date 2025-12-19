@@ -61,6 +61,44 @@
         "q2": 2,
         "q3": 2
       }
+    },
+    {
+      "id": "1766072528656",
+      "name": "rajesh",
+      "email": "BHANURAJESh@GMAIL.COM",
+      "password": "123456",
+      "mobile": "+9123456789",
+      "createdAt": "2025-12-18T15:42:08.656Z",
+      "riskScore": 6,
+      "learningLevel": "Intermediate",
+      "riskAnswers": {
+        "q1": 2,
+        "q2": 2,
+        "q3": 2
+      }
+    },
+    {
+      "id": "1766117336316",
+      "name": "Test User",
+      "email": "",
+      "password": "",
+      "mobile": "",
+      "createdAt": "2025-12-19T04:08:56.317Z",
+      "riskScore": 4,
+      "learningLevel": "Beginner",
+      "riskAnswers": {
+        "q2": 1,
+        "q3": 2,
+        "q1": 1
+      }
+    },
+    {
+      "id": "1766122236295",
+      "name": "Test User",
+      "email": "test@example.com",
+      "password": "password123",
+      "mobile": "",
+      "createdAt": "2025-12-19T05:30:36.295Z"
     }
   ]
 }
