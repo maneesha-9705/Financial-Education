@@ -18,12 +18,34 @@
     font-weight: 800;
     color: var(--color-primary);
     display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    flex-direction: column;
+    /* Stack name and tagline */
+    align-items: flex-start;
+    /* Left align text */
+    gap: 0;
+    /* Remove gap to keep tagline close */
+    line-height: 1;
+    /* Tighten line height */
+    text-decoration: none;
+    /* padding-left: 50px; */
 }
 
 .navbar-logo span {
     color: var(--color-secondary);
+    font-size: 1.5rem;
+    /* Ensure main name is large */
+}
+
+.navbar-logo i {
+    font-size: 0.75rem;
+    /* Smaller font for caption */
+    font-weight: 400;
+    /* Normal weight */
+    color: var(--color-text-main);
+    /* Softer color */
+    font-style: normal;
+    /* Remove italic if desired, or keep it */
+    opacity: 0.8;
 }
 
 .navbar-links {
@@ -64,9 +86,72 @@
     gap: var(--spacing-sm);
 }
 
+/* Profile Icon */
+.profile-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #2ecc71;
+    /* Green background */
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+}
+
+.profile-icon:hover {
+    transform: scale(1.1);
+}
+
+/* Menu Icon */
+.menu-icon {
+    display: none;
+    cursor: pointer;
+    color: var(--color-text-main);
+}
+
 @media (max-width: 768px) {
+    .menu-icon {
+        display: block;
+    }
+
     .navbar-links {
         display: none;
-        /* simple mobile hide for now, or hamburger later */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background-color: var(--color-surface);
+        padding: 1rem;
+        box-shadow: var(--shadow-sm);
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .navbar-links.active {
+        display: flex;
+        animation: slideDown 0.3s ease forwards;
+    }
+
+    .nav-link::after {
+        display: none;
+        /* Remove underline effect on mobile for cleaner look */
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
