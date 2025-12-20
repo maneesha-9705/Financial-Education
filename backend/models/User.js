@@ -28,6 +28,14 @@ const userSchema = mongoose.Schema({
         type: Boolean,
         required: true,
         default: false
+    },
+    riskScore: {
+        type: Number,
+        required: false
+    },
+    riskAnswers: {
+        type: mongoose.Schema.Types.Mixed, // Stores map of questionId -> value
+        required: false
     }
 }, {
     timestamps: true

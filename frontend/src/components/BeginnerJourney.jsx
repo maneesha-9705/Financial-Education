@@ -36,7 +36,7 @@ export default function BeginnerJourney({ userLevel }) {
             {!started ? (
                 <WelcomeScreen tagline={tagline} onStart={() => setStarted(true)} themeStyles={themeStyles} />
             ) : (
-                <LearningDashboard userLevel={userLevel} themeStyles={themeStyles} />
+                <LearningDashboard userLevel={userLevel} themeStyles={themeStyles} isDarkMode={isDarkMode} />
             )}
         </div>
     );
@@ -59,7 +59,7 @@ function WelcomeScreen({ tagline, onStart, themeStyles }) {
 
 /* ------------------ DASHBOARD ------------------ */
 
-function LearningDashboard({ userLevel, themeStyles }) {
+function LearningDashboard({ userLevel, themeStyles, isDarkMode }) {
     // Determine initial state
     const isIntermediateUser = userLevel === 'Intermediate' || userLevel === 'Advanced';
     const [currentTab, setCurrentTab] = useState(isIntermediateUser ? 'Intermediate' : 'Beginner');
@@ -111,6 +111,7 @@ function LearningDashboard({ userLevel, themeStyles }) {
                     onComplete={handleCompleteBeginner}
                     isCompleted={beginnerCompleted}
                     themeStyles={themeStyles}
+                    isDarkMode={isDarkMode}
                 />
             ) : (
                 <IntermediateModule themeStyles={themeStyles} />
@@ -120,7 +121,7 @@ function LearningDashboard({ userLevel, themeStyles }) {
 }
 
 /* ------------------ BEGINNER MODULE ------------------ */
-function BeginnerModule({ onComplete, isCompleted, themeStyles }) {
+function BeginnerModule({ onComplete, isCompleted, themeStyles, isDarkMode }) {
     return (
         <div style={themeStyles.module}>
             <h3 style={themeStyles.moduleTitle}>📘 MODULE 1: INVESTING MADE SIMPLE</h3>

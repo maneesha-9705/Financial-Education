@@ -164,9 +164,13 @@ export default function Onboarding({ onComplete }) {
         setFinalLevel(level);
 
         // Update User in DB
+        // Update User in DB
         setLoading(true);
         try {
             const userId = localStorage.getItem('financial_user_id');
+            // Simulate AI Analysis Delay
+            await new Promise(resolve => setTimeout(resolve, 1500));
+
             await axios.patch(`/users/${userId}`, {
                 riskScore: score,
                 learningLevel: level,
@@ -175,6 +179,7 @@ export default function Onboarding({ onComplete }) {
             setStep(3);
         } catch (error) {
             console.error("Error saving risk profile", error);
+            alert("Failed to save results. Please try again.");
         } finally {
             setLoading(false);
         }

@@ -113,6 +113,14 @@ const updateUserProfile = async (req, res) => {
                 user.learningLevel = req.body.learningLevel;
             }
 
+            if (req.body.riskScore !== undefined) {
+                user.riskScore = req.body.riskScore;
+            }
+
+            if (req.body.riskAnswers) {
+                user.riskAnswers = req.body.riskAnswers;
+            }
+
             if (req.body.password) {
                 user.password = req.body.password;
             }
