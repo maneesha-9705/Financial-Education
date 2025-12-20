@@ -36,7 +36,7 @@ export default function BeginnerJourney({ userLevel, dailyQuote }) {
             {!started ? (
                 <WelcomeScreen tagline={tagline} onStart={() => setStarted(true)} themeStyles={themeStyles} />
             ) : (
-                <LearningDashboard userLevel={userLevel} themeStyles={themeStyles} isDarkMode={isDarkMode} dailyQuote={dailyQuote} />
+                <LearningDashboard userLevel={userLevel} themeStyles={themeStyles} isDarkMode={isDarkMode} />
             )}
         </div>
     );
@@ -59,7 +59,7 @@ function WelcomeScreen({ tagline, onStart, themeStyles }) {
 
 /* ------------------ DASHBOARD ------------------ */
 
-function LearningDashboard({ userLevel, themeStyles, isDarkMode, dailyQuote }) {
+function LearningDashboard({ userLevel, themeStyles, isDarkMode }) {
     // Determine initial state
     const isIntermediateUser = userLevel === 'Intermediate' || userLevel === 'Advanced';
     const [currentTab, setCurrentTab] = useState(isIntermediateUser ? 'Intermediate' : 'Beginner');

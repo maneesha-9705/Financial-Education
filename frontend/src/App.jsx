@@ -15,6 +15,8 @@ import PageLogger from './components/PageLogger';
 import Chatbot from './components/Chatbot';
 import './App.css';
 
+import Chatbot from './components/Chatbot';
+
 function App() {
   const [isOnboarded, setIsOnboarded] = useState(false);
   const [isChecking, setIsChecking] = useState(true);
@@ -45,6 +47,7 @@ function App() {
   return (
     <Router>
       <PageLogger />
+      <Chatbot isOnboarded={isOnboarded} />
       {!isOnboarded ? (
         <Onboarding onComplete={() => setIsOnboarded(true)} />
       ) : (
