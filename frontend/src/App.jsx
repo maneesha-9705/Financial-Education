@@ -9,7 +9,10 @@ import Tools from './pages/Tools';
 import Profile from './pages/Profile';
 import Community from './pages/Community';
 import Onboarding from './pages/Onboarding/Onboarding';
+import StockPortfolio from './pages/StockPortfolio';
+import StockSimulator from './pages/StockSimulator';
 import PageLogger from './components/PageLogger';
+import Chatbot from './components/Chatbot';
 import './App.css';
 
 import Chatbot from './components/Chatbot';
@@ -20,7 +23,7 @@ function App() {
 
   useEffect(() => {
     const checkUserStatus = async () => {
-      const userId = localStorage.getItem('financial_user_id');
+      const userId = sessionStorage.getItem('financial_user_id');
       if (userId) {
         try {
           const response = await axios.get(`/users/${userId}`);
@@ -55,16 +58,19 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/learn" element={<Learn />} />
               <Route path="/tools" element={<Tools />} />
+              <Route path="/portfolio" element={<StockPortfolio />} />
+              <Route path="/simulator" element={<StockSimulator />} />
               <Route path="/community" element={<Community />} />
               <Route path="/profile" element={<Profile onLogout={() => {
-                localStorage.removeItem('financial_user_id');
-                localStorage.removeItem('token');
+                sessionStorage.removeItem('financial_user_id');
+                sessionStorage.removeItem('token');
                 setIsOnboarded(false);
               }} />} />
               <Route path="*" element={<Navigate to="/" />} />
             </Routes>
           </main>
           <Footer />
+          <Chatbot />
         </div>
       )}
     </Router>

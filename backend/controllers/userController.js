@@ -22,6 +22,8 @@ const authUser = async (req, res) => {
                 name: user.name,
                 email: user.email,
                 learningLevel: user.learningLevel,
+                riskScore: user.riskScore,
+                riskAnswers: user.riskAnswers,
                 token: generateToken(user._id),
                 message: 'Login successful'
             });
@@ -82,6 +84,8 @@ const getUserProfile = async (req, res) => {
                 name: user.name,
                 email: user.email,
                 learningLevel: user.learningLevel,
+                riskScore: user.riskScore,
+                riskAnswers: user.riskAnswers,
             });
         } else {
             res.status(404).json({ message: 'User not found' });
@@ -112,6 +116,13 @@ const updateUserProfile = async (req, res) => {
             if (req.body.learningLevel) {
                 user.learningLevel = req.body.learningLevel;
             }
+            // Update Risk Profile Data
+            if (req.body.riskScore !== undefined) {
+                user.riskScore = req.body.riskScore;
+            }
+            if (req.body.riskAnswers) {
+                user.riskAnswers = req.body.riskAnswers;
+            }
 
             if (req.body.riskScore !== undefined) {
                 user.riskScore = req.body.riskScore;
@@ -132,6 +143,8 @@ const updateUserProfile = async (req, res) => {
                 name: updatedUser.name,
                 email: updatedUser.email,
                 learningLevel: updatedUser.learningLevel,
+                riskScore: updatedUser.riskScore,
+                riskAnswers: updatedUser.riskAnswers,
                 token: generateToken(updatedUser._id),
             });
         } else {

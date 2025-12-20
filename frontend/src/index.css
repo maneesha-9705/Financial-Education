@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 :root {
   /* Premium Color Palette */
   --color-primary: #0f172a;

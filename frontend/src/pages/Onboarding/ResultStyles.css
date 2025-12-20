@@ -1,0 +1,55 @@
+/* Existing CSS content is assumed to be preserved if I append or use replace. 
+   Since write_to_file overwrites unless I read and append manually, or use replace_file_content. 
+   Wait, replace_file_content is better for updating blocks. 
+   But I want to Add new styles mostly. 
+   I will use replace_file_content to replace the .level-badge and append new styles at the end.
+*/
+/* 
+   I'll construct the replacement for .level-badge and append new logic. 
+   Actually, I'll just append to the file using a Replace that targets the end of the file or just adds after level-description.
+*/
+
+/* Level Badge - Dynamic */
+.level-badge {
+    padding: 0.75rem 2rem;
+    border-radius: 9999px;
+    font-weight: 700;
+    display: inline-block;
+    margin: 1rem 0;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.level-badge.beginner {
+    background: linear-gradient(135deg, #059669 0%, #34d399 100%); /* Green */
+}
+.level-badge.intermediate {
+    background: linear-gradient(135deg, #0284c7 0%, #38bdf8 100%); /* Blue */
+}
+.level-badge.advanced {
+    background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%); /* Purple */
+}
+
+.result-container {
+    text-align: center;
+    animation: slideUp 0.5s ease-out;
+}
+
+.result-icon-wrapper {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.4));
+    animation: float 3s ease-in-out infinite;
+}
+
+.result-description-card {
+    background: rgba(255,255,255,0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border: 1px solid rgba(255,255,255,0.1);
+    text-align: left;
+}

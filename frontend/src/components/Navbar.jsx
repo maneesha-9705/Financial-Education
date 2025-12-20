@@ -9,7 +9,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-    const userId = localStorage.getItem('financial_user_id');
+    const userId = sessionStorage.getItem('financial_user_id');
     if (userId) {
       axios.get(`/users/${userId}`)
         .then(res => setUserName(res.data.name))
@@ -44,6 +44,12 @@ const Navbar = () => {
           </li>
           <li>
             <Link to="/tools" className={`nav-link ${isActive('/tools')}`} onClick={() => setIsMenuOpen(false)}>Tools</Link>
+          </li>
+          <li>
+            <Link to="/portfolio" className={`nav-link ${isActive('/portfolio')}`} onClick={() => setIsMenuOpen(false)}>Portfolio</Link>
+          </li>
+          <li>
+            <Link to="/simulator" className={`nav-link ${isActive('/simulator')}`} onClick={() => setIsMenuOpen(false)}>Simulator</Link>
           </li>
           <li>
             <Link to="/community" className={`nav-link ${isActive('/community')}`} onClick={() => setIsMenuOpen(false)}>Community</Link>

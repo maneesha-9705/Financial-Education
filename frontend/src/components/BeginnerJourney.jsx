@@ -8,7 +8,7 @@ const taglines = [
     "Investing made simple, safe, and smart."
 ];
 
-export default function BeginnerJourney({ userLevel }) {
+export default function BeginnerJourney({ userLevel, dailyQuote }) {
     const [started, setStarted] = useState(true);
     const [tagline, setTagline] = useState("");
     const [isDarkMode, setIsDarkMode] = useState(false);
@@ -85,6 +85,23 @@ function LearningDashboard({ userLevel, themeStyles, isDarkMode }) {
     return (
         <div style={themeStyles.dashboardContainer}>
             <h2 style={themeStyles.heading}>Your Learning Dashboard</h2>
+            {dailyQuote && (
+                <div style={{
+                    textAlign: 'center',
+                    marginBottom: '2rem',
+                    fontStyle: 'italic',
+                    color: isDarkMode ? '#cbd5e1' : '#475569',
+                    maxWidth: '80%',
+                    margin: '0 auto 2rem',
+                    padding: '1rem',
+                    borderLeft: '4px solid #0d9488',
+                    backgroundColor: isDarkMode ? '#1e293b' : '#ffffff',
+                    borderRadius: '8px',
+                    boxShadow: isDarkMode ? 'none' : '0 2px 4px rgba(0,0,0,0.05)'
+                }}>
+                    "{dailyQuote.text}" — <span style={{ fontWeight: '600', color: '#0d9488' }}>{dailyQuote.author}</span>
+                </div>
+            )}
 
             <div style={themeStyles.tabContainer}>
                 {!isIntermediateUser && (
@@ -106,7 +123,7 @@ function LearningDashboard({ userLevel, themeStyles, isDarkMode }) {
                 </div>
             </div>
 
-            {currentTab === 'Beginner' && !isIntermediateUser ? (
+            {currentTab === 'Beginner' ? (
                 <BeginnerModule
                     onComplete={handleCompleteBeginner}
                     isCompleted={beginnerCompleted}

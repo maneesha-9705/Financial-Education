@@ -63,95 +63,12 @@
       }
     },
     {
-      "id": "1766072528656",
-      "name": "rajesh",
-      "email": "BHANURAJESh@GMAIL.COM",
+      "id": "1766077616435",
+      "name": "Chelluboina Navya",
+      "email": "chnavya0777@gmail.com",
       "password": "123456",
-      "mobile": "+9123456789",
-      "createdAt": "2025-12-18T15:42:08.656Z",
-      "riskScore": 6,
-      "learningLevel": "Intermediate",
-      "riskAnswers": {
-        "q1": 2,
-        "q2": 2,
-        "q3": 2
-      }
-    },
-    {
-      "id": "1766117336316",
-      "name": "Test User",
-      "email": "",
-      "password": "",
       "mobile": "",
-      "createdAt": "2025-12-19T04:08:56.317Z",
-      "riskScore": 4,
-      "learningLevel": "Beginner",
-      "riskAnswers": {
-        "q2": 1,
-        "q3": 2,
-        "q1": 1
-      }
-    },
-    {
-      "id": "1766122236295",
-      "name": "Test User",
-      "email": "test@example.com",
-      "password": "password123",
-      "mobile": "",
-      "createdAt": "2025-12-19T05:30:36.295Z",
-      "riskScore": 4,
-      "learningLevel": "Beginner",
-      "riskAnswers": {
-        "q2": 1,
-        "q3": 2,
-        "q1": 1
-      }
-    },
-    {
-      "id": "1766125408068",
-      "name": "233",
-      "email": "ertyhjukl@gmail.com",
-      "password": "123456",
-      "mobile": "+911234567890",
-      "createdAt": "2025-12-19T06:23:28.068Z",
-      "riskScore": 3,
-      "learningLevel": "Beginner",
-      "riskAnswers": {
-        "q1": 1,
-        "q2": 1,
-        "q3": 1
-      }
-    },
-    {
-      "id": "1766127665572",
-      "name": "Test Beginner",
-      "email": "beginner@test.com",
-      "password": "password123",
-      "mobile": "",
-      "createdAt": "2025-12-19T07:01:05.573Z"
-    },
-    {
-      "id": "1766128808383",
-      "name": "ertyuiop[",
-      "email": "12degfhg@gmail.com",
-      "password": "123456",
-      "mobile": "123456788",
-      "createdAt": "2025-12-19T07:20:08.383Z",
-      "riskScore": 3,
-      "learningLevel": "Beginner",
-      "riskAnswers": {
-        "q1": 1,
-        "q2": 1,
-        "q3": 1
-      }
-    },
-    {
-      "id": "1766129191503",
-      "name": "345678",
-      "email": "tyujkl@gmail.com",
-      "password": "123456",
-      "mobile": "1234567890",
-      "createdAt": "2025-12-19T07:26:31.503Z",
+      "createdAt": "2025-12-18T17:06:56.435Z",
       "riskScore": 3,
       "learningLevel": "Beginner",
       "riskAnswers": {
