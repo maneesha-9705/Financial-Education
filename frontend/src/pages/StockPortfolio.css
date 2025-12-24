@@ -1,224 +1,369 @@
-/* Financial-Education/frontend/src/pages/StockPortfolio.css */
+/* RESTORED & RESPONSIVE MISSION CONTROL STYLES */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap');
 
-.portfolio-container {
-  padding: var(--spacing-lg);
-  color: var(--color-text-main);
-  background-color: var(--color-background);
+.mission-control-body {
   min-height: 100vh;
+  background-color: #02020a;
+  color: #f1f5f9;
+  font-family: 'Outfit', sans-serif;
+  padding: 2rem;
+  position: relative;
+  overflow-x: hidden;
 }
 
-.portfolio-header {
-  margin-bottom: var(--spacing-lg);
+.mc-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  position: relative;
+  z-index: 10;
+}
+
+/* Header & Breadcrumbs */
+.mc-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1.5rem;
 }
 
-.portfolio-header h1 {
-  font-size: var(--font-size-xxl);
-  font-weight: 700;
-  margin-bottom: var(--spacing-xs);
-}
-
-.portfolio-header p {
-  color: var(--color-text-muted);
-}
-
-.portfolio-actions {
+.mc-title-group h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  font-style: italic;
+  letter-spacing: -2px;
   display: flex;
-  gap: var(--spacing-sm);
+  align-items: center;
+  gap: 1rem;
+  margin: 0;
 }
 
-/* Summary Cards */
-.summary-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: var(--spacing-md);
-  margin-bottom: var(--spacing-lg);
+.mc-label {
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: #22d3ee;
+  margin-bottom: 0.5rem;
 }
 
-.summary-card {
-  background: var(--color-surface);
-  padding: var(--spacing-md);
-  border-radius: 12px;
-  border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.2s;
-}
-
-.summary-card:hover {
-  transform: translateY(-2px);
-}
-
-.summary-card .label {
-  color: var(--color-text-muted);
-  font-size: var(--font-size-sm);
-  margin-bottom: var(--spacing-xs);
-}
-
-.summary-card .value {
-  font-size: var(--font-size-xl);
+.version-pill {
+  font-size: 10px;
+  font-style: normal;
   font-weight: 700;
-  color: var(--color-text-main);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 4px 12px;
+  border-radius: 100px;
+  color: #64748b;
+  letter-spacing: 1px;
 }
 
-.summary-card .sub-value {
-  font-size: var(--font-size-sm);
-  margin-left: var(--spacing-xs);
-  font-weight: 500;
+.header-actions {
+  display: flex;
+  gap: 1rem;
 }
 
-.positive {
-  color: #10b981; /* Green */
-}
-
-.negative {
-  color: #ef4444; /* Red */
-}
-
-/* Dashboard Grid */
-.dashboard-grid {
+/* Stats Row */
+.mc-stats-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: var(--spacing-md);
-  margin-bottom: var(--spacing-lg);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
 }
 
-@media (max-width: 900px) {
-  .dashboard-grid {
+.mc-stat-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(40px);
+  border-radius: 32px;
+  padding: 1.75rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mc-stat-card:hover {
+  border-color: rgba(34, 211, 238, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-5px);
+}
+
+.stat-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+}
+
+.stat-value {
+  font-size: 2.2rem;
+  font-weight: 900;
+  font-style: italic;
+}
+
+.stat-sub {
+  font-size: 10px;
+  font-weight: 700;
+  color: #475569;
+  text-transform: uppercase;
+  margin-top: 0.75rem;
+}
+
+/* Visuals Layout */
+.mc-visuals {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 1100px) {
+  .mc-visuals {
     grid-template-columns: 1fr;
   }
 }
 
-.chart-card {
-  background: var(--color-surface);
-  padding: var(--spacing-lg);
-  border-radius: 16px;
-  border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-sm);
+.mc-chart-box,
+.mc-dist-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 48px;
+  padding: 2.5rem;
+  min-height: 450px;
+  display: flex;
+  flex-direction: column;
 }
 
-.chart-header {
+.chart-header-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: var(--spacing-md);
+  margin-bottom: 2rem;
 }
 
-.chart-header h3 {
-  font-size: var(--font-size-lg);
-  font-weight: 600;
+.time-filters {
+  display: flex;
+  gap: 0.5rem;
 }
 
-.time-range-selector button {
-  background: transparent;
-  border: 1px solid var(--color-border);
-  color: var(--color-text-muted);
-  padding: 4px 12px;
-  border-radius: 6px;
-  margin-left: 8px;
-  font-size: var(--font-size-sm);
+.filter-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: #64748b;
+  padding: 6px 14px;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: 900;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: 0.2s;
 }
 
-.time-range-selector button.active,
-.time-range-selector button:hover {
-  background: var(--color-secondary);
-  color: white;
-  border-color: var(--color-secondary);
+.filter-btn.active {
+  background: #22d3ee;
+  color: #000;
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
 }
 
-/* Asset Allocation - Custom Legend if needed, otherwise Recharts defaults */
-
-/* Holdings Table */
-.holdings-section {
-  background: var(--color-surface);
-  border-radius: 16px;
-  border: 1px solid var(--color-border);
-  padding: var(--spacing-lg);
-  box-shadow: var(--shadow-sm);
+.chart-container-inner {
+  flex: 1;
+  min-height: 0;
 }
 
-.holdings-header {
+/* Pie Chart Legend */
+.allocation-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.legend-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.legend-text {
+  flex: 1;
+  margin-left: 1rem;
+  font-size: 10px;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.legend-val {
+  font-size: 10px;
+  font-weight: 900;
+  color: #fff;
+}
+
+/* Manifest Table */
+.mc-manifest {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 48px;
+  padding: 3rem;
+}
+
+.manifest-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: var(--spacing-md);
+  margin-bottom: 3rem;
 }
 
-.search-bar input {
-  background: var(--color-background);
-  border: 1px solid var(--color-border);
-  padding: 8px 16px;
-  border-radius: 8px;
-  color: var(--color-text-main);
-  outline: none;
+.manifest-badge {
+  font-size: 9px;
+  font-weight: 800;
+  color: #22d3ee;
+  background: rgba(34, 211, 238, 0.05);
+  padding: 6px 14px;
+  border-radius: 100px;
+  border: 1px solid rgba(34, 211, 238, 0.1);
 }
 
-.holdings-table-container {
+.mc-table-wrapper {
   overflow-x: auto;
 }
 
-.holdings-table {
+.mc-table {
   width: 100%;
   border-collapse: collapse;
+  min-width: 900px;
 }
 
-.holdings-table th {
+.mc-table th {
   text-align: left;
-  padding: var(--spacing-sm);
-  color: var(--color-text-muted);
-  font-size: var(--font-size-xs);
+  padding-bottom: 1.5rem;
+  font-size: 10px;
   text-transform: uppercase;
-  border-bottom: 1px solid var(--color-border);
+  color: #475569;
+  letter-spacing: 3px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.holdings-table td {
-  padding: var(--spacing-sm);
-  border-bottom: 1px solid var(--color-border);
-  color: var(--color-text-main);
-  font-size: var(--font-size-sm);
+.mc-table td {
+  padding: 2rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.02);
 }
 
-.holdings-table tr:last-child td {
-  border-bottom: none;
-}
-
-.stock-info {
+.asset-identity {
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm);
+  gap: 1.25rem;
 }
 
-.stock-logo {
-  width: 32px;
-  height: 32px;
-  background: #334155;
-  border-radius: 8px;
+.asset-avatar {
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
-  font-weight: bold;
-  font-size: 10px;
+  font-weight: 900;
+  font-style: italic;
+  color: #22d3ee;
+  transition: 0.3s;
 }
 
-.stock-ticker {
+.group:hover .asset-avatar {
+  border-color: rgba(34, 211, 238, 0.4);
+  box-shadow: 0 0 15px rgba(34, 211, 238, 0.2);
+}
+
+.asset-ticker {
+  font-weight: 900;
+  font-style: italic;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+}
+
+.asset-name {
+  font-size: 9px;
   font-weight: 700;
-  display: block;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.stock-name {
-  font-size: 12px;
-  color: var(--color-text-muted);
+.status-pill {
+  font-size: 8px;
+  font-weight: 900;
+  padding: 4px 10px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.sector-tag {
-  background: rgba(56, 189, 248, 0.1); /* Sky blue tint */
-  color: #38bdf8;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 11px;
-  font-weight: 600;
+.status-pill.ascending {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+}
+
+.status-pill.stable {
+  background: rgba(34, 211, 238, 0.1);
+  color: #22d3ee;
+}
+
+.status-pill.drifting {
+  background: rgba(244, 63, 94, 0.1);
+  color: #f43f5e;
+}
+
+.yield-val {
+  font-size: 1.1rem;
+  font-weight: 900;
+  font-style: italic;
+}
+
+.yield-val.positive {
+  color: #10b981;
+}
+
+.yield-val.negative {
+  color: #f43f5e;
+}
+
+.yield-percent {
+  font-size: 9px;
+  font-weight: 700;
+  color: #475569;
+  margin-top: 4px;
+}
+
+@media (max-width: 768px) {
+  .mission-control-body {
+    padding: 1.5rem 1rem;
+  }
+
+  .mc-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .mc-chart-box,
+  .mc-dist-box {
+    padding: 1.5rem;
+    min-height: 350px;
+    border-radius: 32px;
+  }
+
+  .mc-manifest {
+    padding: 2rem 1.5rem;
+    border-radius: 32px;
+  }
 }

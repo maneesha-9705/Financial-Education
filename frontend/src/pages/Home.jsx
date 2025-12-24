@@ -73,6 +73,14 @@ const Home = () => {
                         </p>
                         <Link to="/profile" style={{ color: 'var(--color-secondary)', fontWeight: 'bold' }}>View Profile &rarr;</Link>
                     </div>
+                    <div className="card feature-card">
+                        <div className="feature-icon">🚀</div>
+                        <h3>Anti-Gravity Simulator</h3>
+                        <p>
+                            Practice trading with $100,000 in virtual credits. Experience zero-G market mechanics and test strategies in the void.
+                        </p>
+                        <Link to="/simulator" style={{ color: 'var(--color-secondary)', fontWeight: 'bold' }}>Launch Sim &rarr;</Link>
+                    </div>
                 </div>
             </section>
         </div>

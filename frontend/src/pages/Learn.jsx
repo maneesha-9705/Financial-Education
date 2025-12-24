@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Learn.css';
 import BeginnerJourney from '../components/BeginnerJourney';
+import IntermediateModule from '../components/IntermediateModule';
 
 const Learn = () => {
     const [activeTab, setActiveTab] = useState('modules');
@@ -121,8 +122,12 @@ const Learn = () => {
         </div>;
     }
 
-    if (userLevel === 'Beginner' || userLevel === 'Intermediate') {
+    if (userLevel === 'Beginner') {
         return <BeginnerJourney userLevel={userLevel} dailyQuote={quote} />;
+    }
+
+    if (userLevel === 'Intermediate') {
+        return <IntermediateModule userLevel={userLevel} dailyQuote={quote} />;
     }
 
     return (

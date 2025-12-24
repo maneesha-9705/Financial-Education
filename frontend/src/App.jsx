@@ -15,8 +15,6 @@ import PageLogger from './components/PageLogger';
 import Chatbot from './components/Chatbot';
 import './App.css';
 
-import Chatbot from './components/Chatbot';
-
 function App() {
   const [isOnboarded, setIsOnboarded] = useState(false);
   const [isChecking, setIsChecking] = useState(true);
@@ -70,7 +68,6 @@ function App() {
             </Routes>
           </main>
           <Footer />
-          <Chatbot />
         </div>
       )}
     </Router>

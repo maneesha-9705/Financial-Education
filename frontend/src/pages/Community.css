@@ -169,3 +169,50 @@ body.dark-mode .community-page {
     color: #666;
     font-size: 1.2rem;
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .community-page {
+        padding: 1rem;
+    }
+
+    .community-header h1 {
+        font-size: 2rem;
+    }
+
+    .community-header p {
+        font-size: 1rem;
+    }
+
+    .share-form-container {
+        padding: 1.5rem;
+    }
+
+    .experience-card {
+        min-width: 250px;
+        max-width: 100%;
+    }
+
+    .static-container {
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .community-header h1 {
+        font-size: 1.75rem;
+    }
+
+    .community-header p {
+        font-size: 0.9rem;
+    }
+
+    .share-form-container {
+        padding: 1rem;
+    }
+
+    .experience-card {
+        min-width: 100%;
+        padding: 1.25rem;
+    }
+}
