@@ -31,13 +31,11 @@ const userSchema = mongoose.Schema({
     },
     riskScore: {
         type: Number,
-        required: false,
-        default: 0
+        required: false
     },
     riskAnswers: {
-        type: Object,
-        required: false,
-        default: {}
+        type: mongoose.Schema.Types.Mixed, // Stores map of questionId -> value
+        required: false
     }
 }, {
     timestamps: true

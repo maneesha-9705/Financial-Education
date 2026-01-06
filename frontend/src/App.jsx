@@ -45,6 +45,7 @@ function App() {
   return (
     <Router>
       <PageLogger />
+      <Chatbot isOnboarded={isOnboarded} />
       {!isOnboarded ? (
         <Onboarding onComplete={() => setIsOnboarded(true)} />
       ) : (
@@ -67,7 +68,6 @@ function App() {
             </Routes>
           </main>
           <Footer />
-          <Chatbot />
         </div>
       )}
     </Router>

@@ -5,17 +5,23 @@ import './Navbar.css';
 
 const Navbar = () => {
   const location = useLocation();
-  const [userName, setUserName] = useState('');
+  const [user, setUser] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const userId = sessionStorage.getItem('financial_user_id');
     if (userId) {
       axios.get(`/users/${userId}`)
-        .then(res => setUserName(res.data.name))
+        .then(res => setUser(res.data))
         .catch(err => console.error(err));
     }
   }, []);
+
+  const handleLogout = () => {
+    sessionStorage.removeItem('financial_user_id');
+    sessionStorage.removeItem('token');
+    window.location.href = '/';
+  };
 
   const isActive = (path) => location.pathname === path ? 'active' : '';
 
@@ -54,9 +60,7 @@ const Navbar = () => {
           <li>
             <Link to="/community" className={`nav-link ${isActive('/community')}`} onClick={() => setIsMenuOpen(false)}>Community</Link>
           </li>
-          <li>
-            <Link to="/profile" className={`nav-link ${isActive('/profile')}`} onClick={() => setIsMenuOpen(false)}>Profile</Link>
-          </li>
+
         </ul>
         <div className="navbar-actions">
           <button
@@ -66,12 +70,12 @@ const Navbar = () => {
           >
             🌓
           </button>
-          {userName ? (
-            <Link to="/profile" className="profile-icon" title={userName}>
-              {userName.charAt(0).toUpperCase()}
+          {user ? (
+            <Link to="/profile" className="profile-icon" title={user.name}>
+              {user.name.charAt(0).toUpperCase()}
             </Link>
           ) : (
-            <Link to="/profile" className="btn btn-primary">Get Started</Link>
+            <Link to="/onboarding" className="btn btn-primary" style={{ padding: '8px 16px', borderRadius: '20px', textDecoration: 'none' }}>Get Started</Link>
           )}
         </div>
       </div>

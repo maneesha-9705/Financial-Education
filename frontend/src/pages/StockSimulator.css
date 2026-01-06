@@ -1,0 +1,228 @@
+/* BRIEF ANTI-GRAVITY SIMULATOR STYLES */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;900&display=swap');
+
+:root {
+    --sim-bg: #05050f;
+    --sim-cyan: #22d3ee;
+    --sim-rose: #f43f5e;
+    --sim-emerald: #10b981;
+    --sim-glass: rgba(255, 255, 255, 0.02);
+    --sim-border: rgba(255, 255, 255, 0.08);
+    --sim-font: 'Outfit', sans-serif;
+}
+
+.simulator-body {
+    min-height: 100vh;
+    background-color: var(--sim-bg);
+    color: #f1f5f9;
+    font-family: var(--sim-font);
+    padding: 1rem;
+    overflow: hidden;
+}
+
+.simulator-container {
+    max-width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: calc(100vh - 2rem);
+}
+
+/* Compact Header */
+.sim-header-brief {
+    background: var(--sim-glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--sim-border);
+    border-radius: 20px;
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stat-group {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-label {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #64748b;
+    font-weight: 700;
+}
+
+.stat-value {
+    font-size: 1.25rem;
+    font-weight: 900;
+}
+
+/* Layout */
+.sim-content {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 1rem;
+    flex: 1;
+    min-height: 0;
+}
+
+.main-view {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+/* Compact Asset Cards */
+.asset-grid-brief {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+}
+
+.asset-card-brief {
+    background: var(--sim-glass);
+    border: 1px solid var(--sim-border);
+    border-radius: 16px;
+    padding: 1rem;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 180px;
+}
+
+.asset-card-brief:hover {
+    border-color: var(--sim-cyan);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+/* Minimalist AI Module */
+.ai-module-brief {
+    background: var(--sim-glass);
+    border: 1px solid var(--sim-border);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.ai-messages-brief {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    font-size: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.bubble {
+    padding: 0.75rem 1rem;
+    border-radius: 14px;
+    max-width: 90%;
+    line-height: 1.4;
+}
+
+.bubble.ai {
+    background: rgba(255, 255, 255, 0.05);
+    color: #94a3b8;
+    align-self: flex-start;
+    border-bottom-left-radius: 0;
+}
+
+.bubble.user {
+    background: var(--sim-cyan);
+    color: #000;
+    font-weight: 600;
+    align-self: flex-end;
+    border-bottom-right-radius: 0;
+}
+
+/* Global Utilities */
+.btn-sm {
+    padding: 0.4rem 0.8rem;
+    border-radius: 8px;
+    font-size: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
+    transition: 0.2s;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-cyan {
+    background: var(--sim-cyan);
+    color: #000;
+}
+
+.btn-outline {
+    border: 1px solid var(--sim-border);
+    color: #fff;
+    background: transparent;
+}
+
+.btn-outline:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.btn-thrust {
+    border: 1px solid var(--sim-emerald);
+    color: var(--sim-emerald);
+    background: rgba(16, 185, 129, 0.05);
+    flex: 1;
+}
+
+.btn-drift {
+    border: 1px solid var(--sim-rose);
+    color: var(--sim-rose);
+    background: rgba(244, 63, 94, 0.05);
+    flex: 1;
+}
+
+.btn-thrust:hover {
+    background: var(--sim-emerald);
+    color: #000;
+}
+
+.btn-drift:hover {
+    background: var(--sim-rose);
+    color: #000;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    width: 4px;
+}
+
+.scrollbar-hide::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+@media (max-width: 1000px) {
+    .sim-content {
+        grid-template-columns: 1fr;
+    }
+
+    .simulator-body {
+        overflow: auto;
+        padding-right: 1rem;
+    }
+
+    .simulator-container {
+        height: auto;
+    }
+
+    .ai-module-brief {
+        height: 400px;
+    }
+}
